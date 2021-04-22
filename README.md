@@ -7,7 +7,7 @@
 ```
 
 ## Group
-- Rahaf Zaeiter
+- Rahaf Zaiter
 - Fatima Medlij
 - Mohammed Abdulaal
 - Abdullah Taweel
