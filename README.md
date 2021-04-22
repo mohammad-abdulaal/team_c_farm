@@ -7,8 +7,8 @@
 ```
 
 ## Group
-- Rahaf Zeaiter
+- Rahaf Zaeiter
 - Fatima Medlij
-- Mohammed Abulaal
+- Mohammed Abdulaal
 - Abdullah Taweel
 - Louai Misto
