@@ -26,8 +26,8 @@ expo start    # Starts the metro bundler in browser
 - [x] User model (Abdullah)
 - [ ] Unicorn model
 #### Routes
-- [ ] task 1
-- [ ] task 2
+- [x] task 1(mohammad)
+- [] task 2
 - [ ] task 3
 #### Firebase related features
 - [ ] Sign up for firebase
