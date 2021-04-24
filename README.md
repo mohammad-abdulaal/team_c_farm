@@ -9,8 +9,8 @@
 ### backend
 ``` sh
 cd backend
-composer install # Generates vendor folder which contains required packages
-php artisan serve # Serves the project locally on our machine
+composer install    # Generates vendor folder which contains required packages
+php artisan serve   # Serves the project locally on our machine
 ```
 
 ### frontend
