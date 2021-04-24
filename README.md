@@ -17,7 +17,7 @@ expo start # Starts the metro bundler in browser
 ## TODOS
 ### General
 - [x] Create laravel project and upload without vendor dir (LOUAI)
-- [ ] Create expo init project and upload without node_modules dir
+- [x] Create expo init project and upload without node_modules dir
 ### Backend
 #### Controllers
 - [x] User controller (Abdullah)
