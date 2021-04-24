@@ -21,7 +21,7 @@ expo start    # Starts the metro bundler in browser
 ### Backend
 #### Controllers
 - [x] User controller (Abdullah)
-- [ ] Unicorn controller
+- [x] Unicorn controller(Rahaf)
 #### Models
 - [x] User model (Abdullah)
 - [ ] Unicorn model
