@@ -18,10 +18,10 @@ cd frontend
 - [ ] Create expo init project and upload without node_modules dir
 ### Backend
 #### Controllers
-- [ ] User controller
+- [x] User controller (Abdullah)
 - [ ] Unicorn controller
 #### Models
-- [ ] User model
+- [x] User model (Abdullah)
 - [ ] Unicorn model
 #### Routes
 - [ ] task 1
