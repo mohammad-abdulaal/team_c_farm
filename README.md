@@ -14,7 +14,7 @@ cd frontend
 
 ## TODOS
 ### General
-- [x] Create laravel project and upload without vendor dir
+- [x] Create laravel project and upload without vendor dir (LOUAI)
 - [ ] Create expo init project and upload without node_modules dir
 ### Backend
 #### Controllers
