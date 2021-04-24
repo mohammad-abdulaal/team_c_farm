@@ -10,6 +10,8 @@ php artisan serve   # Serves the project locally on our machine
 ### frontend
 ``` sh
 cd frontend
+yarn install # Similar to npm install but better for many reasons
+expo start # Starts the metro bundler in browser
 ```
 
 ## TODOS
