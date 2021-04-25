@@ -30,8 +30,8 @@ expo start    # Starts the metro bundler in browser
 - [ ] task 2
 - [ ] task 3
 #### Firebase related features
-- [ ] Sign up for firebase
-- [ ] Do a little demo
+- [x] Sign up for firebase (fatima)
+- [ ] Do a little demo (fatima)
 
 ### Frontend
 - [x] Figure out what the components will be
