@@ -26,18 +26,20 @@ expo start    # Starts the metro bundler in browser
 - [x] User model (Abdullah)
 - [ ] Unicorn model
 #### Routes
-- [ ] task 1
+- [x] task 1(mohammad)
 - [ ] task 2
 - [ ] task 3
 #### Firebase related features
-- [ ] Sign up for firebase
-- [ ] Do a little demo
-
+- [x] Sign up for firebase (fatima)
+- [x] Do a little demo (fatima)
+- [x] Create a new project (fatima)
+- [ ] Firebase backend configuration
+- [ ] Firebase frontend configuration
 ### Frontend
 - [x] Figure out what the components will be
 - [x] Equivalent of navbar but for mobile(mohammad)
 - [x] Sign in component(mohammad)
-- [ ] Sign up component
+- [ ] Sign up component (fatima)
 - [ ] Unicorn Dashboard component
 - [ ] Component for trading unicorns
 
