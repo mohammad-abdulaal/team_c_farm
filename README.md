@@ -39,7 +39,7 @@ expo start    # Starts the metro bundler in browser
 - [x] Figure out what the components will be
 - [x] Equivalent of navbar but for mobile(mohammad)
 - [x] Sign in component(mohammad)
-- [ ] Sign up component
+- [ ] Sign up component (fatima)
 - [ ] Unicorn Dashboard component
 - [ ] Component for trading unicorns
 
