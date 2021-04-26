@@ -31,8 +31,10 @@ expo start    # Starts the metro bundler in browser
 - [ ] task 3
 #### Firebase related features
 - [x] Sign up for firebase (fatima)
-- [ ] Do a little demo (fatima)
-
+- [x] Do a little demo (fatima)
+- [x] Create a new project (fatima)
+- [ ] Firebase backend configuration
+- [ ] Firebase frontend configuration
 ### Frontend
 - [x] Figure out what the components will be
 - [x] Equivalent of navbar but for mobile(mohammad)
