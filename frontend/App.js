@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+// import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native'
+import TabNavigator from './app/navigation/TabNavigator';
+import { Header } from 'react-native-elements';
+// import { Ionicons } from '@expo/vector-icons';
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <NavigationContainer>
+    <Header>
+    {/* <Ionicons name="notifications-circle-outline" size={24} color="black" /> */}
+    </Header>
+    <TabNavigator/>
+  </NavigationContainer>
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+{/* <Header
+    placement="left"
+    // leftComponent={{ icon: 'menu', color: '#fff' }}
+    // centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+    rightComponent={{ icon: 'note', color: '#ffff' }}
+    /> */}
