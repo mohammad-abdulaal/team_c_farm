@@ -4,10 +4,35 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'reac
 
 
 export default class SignupScreen extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            registered : false
+        }
+        this.email = ''
+        this.password = ''
+        this.first_name = ''
+        this.last_name = ''
+    }
+    handleSubmit = e => {
+        e.preventDefault()
+        const data = {
+            email : this.email,
+            password :this.password,
+            first_name: this.first_name,
+            last_name: this.last_name,
+        }
+    }
     render() {
         return (
             <View style={styles.container}>
                 <Image source={require('../assets/unicorn.png')} />
+                <TextInput style={styles.inputBox}
+                    placeholder="first_name"
+                    placeholderTextColor="#ffffff" />
+                <TextInput style={styles.inputBox}
+                    placeholder="last_name"
+                    placeholderTextColor="#ffffff" />
                 <TextInput style={styles.inputBox}
                     placeholder="email"
                     placeholderTextColor="#ffffff" />
@@ -15,7 +40,7 @@ export default class SignupScreen extends Component {
                     placeholder="password"
                     placeholderTextColor="#ffffff" />
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Login</Text>
+                    <Text style={styles.buttonText} onPress={this.handleSubmit}>Sign Up</Text>
                 </TouchableOpacity>
             </View>
         )

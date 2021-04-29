@@ -4,6 +4,26 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'reac
 
 
 export default class LoginScreen extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            loggedIn : false
+        }
+    }
+    componentDidMount() {
+        console.log("I am in component did Mount")
+    }
+
+    componentWillUnmount () {
+    }
+    handleSubmit=e=>{
+        e.preventDefault();
+        const data ={
+            email :this.email,
+            password:this.password,
+        }
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -14,8 +34,9 @@ export default class LoginScreen extends Component {
                 <TextInput style={styles.inputBox}
                     placeholder="password"
                     placeholderTextColor="#ffffff" />
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Login</Text>
+                <TouchableOpacity style={styles.button}
+                onPress={}>
+                    <Text style={styles.buttonText} onPress={this.handleSubmit}>Login</Text>
                 </TouchableOpacity>
             </View>
         )
