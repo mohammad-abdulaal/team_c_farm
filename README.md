@@ -3,14 +3,14 @@
 ## How to run
 ### backend
 ``` sh
-cd backend
+cd unicorns
 composer install    # Generates vendor folder which contains required packages
 php artisan serve   # Serves the project locally on our machine
 ```
 ### frontend
 ``` sh
 cd frontend
-yarn install  # Similar to npm install but better for many reasons
+npm install  
 expo start    # Starts the metro bundler in browser
 ```
 
@@ -40,7 +40,7 @@ expo start    # Starts the metro bundler in browser
 - [x] Equivalent of navbar but for mobile(mohammad)
 - [ ] Sign in component(mohammad)
 - [ ] Sign up component (fatima)
-- [ ] Unicorn Dashboard component
+- [x] *LOUAI* Unicorn Listing component
 - [ ] Component for trading unicorns
 
 
