@@ -3,21 +3,31 @@
 ## How to run
 ### backend
 ``` sh
-cd backend
+cd unicorns
 composer install    # Generates vendor folder which contains required packages
 php artisan serve   # Serves the project locally on our machine
 ```
 ### frontend
 ``` sh
 cd frontend
-yarn install  # Similar to npm install but better for many reasons
+npm install  
 expo start    # Starts the metro bundler in browser
 ```
 
+
 ## TODOS
-### General
-- [x] Create laravel project and upload without vendor dir (LOUAI)
-- [x] Create expo init project and upload without node_modules dir
+### frontend
+| status             | Task                                   | Assigned to |
+|--------------------|----------------------------------------|-------------|
+| :white_check_mark: | Figure out what the components will be | Louai       |
+| in-progress        | SplashScreen component                 | fatima      |
+| :white_check_mark: | Mobile navbar                          | Mohammad    |
+| in-progress        | Sign in component                      | Mohammad    |
+| in-progress        | Sign up component                      | Fatima      |
+| in-progress        | Unicorn listing component              | Louai       |
+|                    | Add new unicorn component              | Louai       |
+|                    | Trade unicorns feature                 | Louai       |
+
 ### Backend
 #### Controllers
 - [x] User controller (Abdullah)
@@ -35,14 +45,6 @@ expo start    # Starts the metro bundler in browser
 - [x] Create a new project (fatima)
 - [ ] Firebase backend configuration
 - [ ] Firebase frontend configuration
-### Frontend
-- [x] Figure out what the components will be
-- [x] Equivalent of navbar but for mobile(mohammad)
-- [ ] Sign in component(mohammad)
-- [ ] Sign up component (fatima)
-- [ ] Unicorn Dashboard component
-- [ ] Component for trading unicorns
-
 
 ## Group
 - Rahaf Zaiter
