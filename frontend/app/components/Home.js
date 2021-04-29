@@ -1,28 +1,25 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-// import HeaderNotification from './HeaderNotification'
-
+import { StyleSheet, View, } from 'react-native'
+import  { MasterUnicorn } from './Unicorns/index'
 
 const Home = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>This is Home</Text>
+        <View style={styles.appContainer}>
+         <MasterUnicorn />
         </View>
-
     )
 }
+
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
+    appContainer:{
+        flex:3,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'#76a6ef'
     },
     text:{
         fontSize:20,
         fontWeight:'bold',
-        color:'#fff',
     }
 })
-export default Home;
 
+export default Home
