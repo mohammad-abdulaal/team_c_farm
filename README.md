@@ -20,10 +20,10 @@ expo start    # Starts the metro bundler in browser
 | status             | Task                                   | Assigned to |
 |--------------------|----------------------------------------|-------------|
 | :white_check_mark: | Figure out what the components will be | Louai       |
-| in-progress        | LandingScreen                          | fatima      |
+| in-progress        | SplashScreen component                 | fatima      |
 | :white_check_mark: | Mobile navbar                          | Mohammad    |
-| :white_check_mark: | Sign in component                      | Mohammad    |
-|                    | Sign up component                      | Fatima      |
+| in-progress        | Sign in component                      | Mohammad    |
+| in-progress        | Sign up component                      | Fatima      |
 | in-progress        | Unicorn listing component              | Louai       |
 |                    | Add new unicorn component              | Louai       |
 |                    | Trade unicorns feature                 | Louai       |
