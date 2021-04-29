@@ -1,10 +1,11 @@
 
 import React from 'react';
 // import { StyleSheet, Text, View } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import TabNavigator from './app/navigation/TabNavigator';
 import { Header } from 'react-native-elements';
-import LoginScreen from './screens/login';
+import LoginScreen from './screens/LoginScreen';
+//import Splash from './screens/SplashScreen';
 // import { Ionicons } from '@expo/vector-icons';
 export default function App() {
   // return <NavigationContainer>
@@ -14,7 +15,8 @@ export default function App() {
   //   <TabNavigator/>
   // </NavigationContainer>
   return (
-    <LoginScreen/>
+    //<Splash />
+    <LoginScreen />
   )
 }
 {/* <Header
