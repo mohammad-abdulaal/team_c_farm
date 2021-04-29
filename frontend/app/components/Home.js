@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, Button} from 'react-native'
 import { Card } from 'react-native-elements'
 
 class Unicorn extends React.Component {
@@ -12,7 +12,7 @@ class Unicorn extends React.Component {
           name: "bellatrix",
           owner: {
             id: 111,
-            first_name: "ess",
+            first_name: "alice",
             last_name: ""
           }
         },
@@ -21,7 +21,7 @@ class Unicorn extends React.Component {
           name: "arcturus",
           owner: {
             id: 111,
-            first_name: "ess",
+            first_name: "bob",
             last_name: ""
           }
         },
@@ -30,7 +30,7 @@ class Unicorn extends React.Component {
           name: "vega",
           owner: {
             id: "none",
-            first_name: "",
+            first_name: "charlie",
             last_name: ""
           },
         }
@@ -43,11 +43,23 @@ class Unicorn extends React.Component {
       return(
         <Card key={i}>
           <Card.Title>
-            unicorn {i}
+            {e.name}
           </Card.Title>
           <Card.Divider />
-          <Text>{e.name}</Text>
-          <Text>{e.owner.first_name}</Text>
+          <Text>owner: {e.owner.first_name}</Text>
+          <View style={{flexDirection: 'row'}}>
+          <Button
+            onPress={() => this.handleDelete(i)}
+            title="delete"
+            color="#841584"
+          />
+          <Button
+            onPress={() => this.handleEdit(i)}
+            title="edit"
+            color="#841584"
+          />
+
+          </View>
         </Card>
       )
     })
@@ -58,12 +70,27 @@ class Unicorn extends React.Component {
       </ScrollView>
     )
   }
+
+  // Handle delete unicorn from view
+  handleDelete = (index) => {
+    this.setState(state => {
+      const data = [...state.data]
+      data.splice(index, 1)
+      return { data }
+    })
+  }
+
+  // TODO
+  handleEdit = (index) => {
+    this.setState(state => {
+      const data = [...state.data]
+    })
+  }
 }
 
 const Home = () => {
     return (
         <View style={styles.appContainer}>
-          {/* <Unicorn style={styles.text}/> */}
           <Unicorn />
         </View>
     )
@@ -72,7 +99,7 @@ const Home = () => {
 
 const styles = StyleSheet.create({
     appContainer:{
-        flex:1,
+        flex:3,
         justifyContent:'center',
         alignItems:'center',
     },
