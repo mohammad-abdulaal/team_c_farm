@@ -43,6 +43,8 @@ class User extends Authenticatable
     ];
 
     // public function unicorn(){
+        
+        //user has many unicorns
     //     return $this->hasMany(Unicorn::class);
     // }
 
