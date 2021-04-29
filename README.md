@@ -20,6 +20,7 @@ expo start    # Starts the metro bundler in browser
 | status             | Task                                   | Assigned to |
 |--------------------|----------------------------------------|-------------|
 | :white_check_mark: | Figure out what the components will be | Louai       |
+| :white_check_mark: | LandingScreen                          | fatima      |
 | :white_check_mark: | Mobile navbar                          | Mohammad    |
 | :white_check_mark: | Sign in component                      | Mohammad    |
 |                    | Sign up component                      | Fatima      |
