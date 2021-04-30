@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
     text: {
 
         fontSize: 100,
-        color: "dark blue",
+        color: "blue",
     },
     logo: {
         height: 300,
         width: 300,
-        opacity: "100%"
+        opacity: 100
     },
     view: {
         flex: 1,

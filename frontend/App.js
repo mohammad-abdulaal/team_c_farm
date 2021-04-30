@@ -13,30 +13,35 @@ import Test from './screens/Test'; import { Ionicons } from '@expo/vector-icons'
 export default function App() {
   return (
     //<Splash />
-
+    <AppStackNavigator/>
     //<LoginScreen />
     //<SignupScreen />
 
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Header>
-          {<Ionicons name="notifications-circle-outline" size={24} color="black" />}
-        </Header>
-        <TabNavigator />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    // <SafeAreaProvider>
+    //   <NavigationContainer>
+    //     <Header>
+    //       {<Ionicons name="notifications-circle-outline" size={24} color="black" />}
+    //     </Header>
+    //     <TabNavigator />
+    //   </NavigationContainer>
+    // </SafeAreaProvider>
+
   );
   //Login space
   //return (
   //<LoginScreen/>
   //)
 }
-
-{
-  <Header
-    placement="left"
-    // leftComponent={{ icon: 'menu', color: '#fff' }}
-    // centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-    rightComponent={{ icon: 'note', color: '#ffff' }}
-  />
-}
+const AppStackNavigator =createStackNavigator({
+  Login : LoginScreen,
+  Signup : SignupScreen,
+  Splash :Splash
+})
+// {
+//   <Header
+//     placement="left"
+//     // leftComponent={{ icon: 'menu', color: '#fff' }}
+//     // centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+//     rightComponent={{ icon: 'note', color: '#ffff' }}
+//   />
+// }

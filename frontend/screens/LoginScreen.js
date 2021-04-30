@@ -34,19 +34,20 @@ export default class LoginScreen extends Component {
                         style={styles.image}>
                     </Image>
                     <Text
-                        style={styles.text}>Log in</Text>
+                        style={styles.text}>Log in
+                    </Text>
                     <TextInput style={styles.inputBox}
                         placeholder="Email"
-                        placeholderTextColor="#ffffff" />
+                        placeholderTextColor="#ffffff"
+                                                 />
                     <TextInput style={styles.inputBox}
                         placeholder="Password"
                         secureTextEntry={true}
                         placeholderTextColor="#ffffff" />
-                    <TouchableOpacity style={styles.button}
+                    <TouchableOpacity style={styles.button}  onPress={this.handleSubmit}
                     /*onPress={ }*/>
                         <Text
-                            style={styles.buttonText}
-                            onPress={this.handleSubmit}>Submit</Text>
+                            style={styles.buttonText}>Submit</Text>
                     </TouchableOpacity>
                     <Text
                         style={{ fontSize: "18px", color: "black" }}>Don't have an account?</Text>
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
     image: {
         height: 100,
         width: 100,
-        opacity: "100%"
+        opacity: 100
     },
 
 
