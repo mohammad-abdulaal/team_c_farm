@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ScrollView, StyleSheet, Text, View, Button} from 'react-native'
 import { Card } from 'react-native-elements'
 
+//something was updated 
 export class MasterUnicorn extends Component {
   constructor(props){
     super(props)
