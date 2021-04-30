@@ -7,13 +7,16 @@ import { Header } from 'react-native-elements';
 import LoginScreen from './screens/LoginScreen';
 import Splash from './screens/SplashScreen';
 import { SafeAreaProvider } from "react-native-safe-area-context";
-
+import SignupScreen from './screens/SignupScreen';
+import Test from './screens/Test';
 // import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
   return (
     //<Splash />
-    <LoginScreen />
+
+    //<LoginScreen />
+    <SignupScreen />
   )/*
     <SafeAreaProvider>
       <NavigationContainer>

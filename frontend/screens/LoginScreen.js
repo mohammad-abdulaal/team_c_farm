@@ -1,8 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 
-
+var login = require('../assets/login.png');
 export default class LoginScreen extends Component {
     constructor(props) {
         super(props)
@@ -26,22 +26,37 @@ export default class LoginScreen extends Component {
     }
     render() {
         return (
-            <View style={styles.container}>
-                <Text
-                    style={{ fontSize: "100", color: "blue" }}>Log in</Text>
-                <TextInput style={styles.inputBox}
-                    placeholder="email"
-                    placeholderTextColor="#ffffff" />
-                <TextInput style={styles.inputBox}
-                    placeholder="password"
-                    placeholderTextColor="#ffffff" />
-                <TouchableOpacity style={styles.button}
-                    /*onPress={ }*/>
+            <View>
+
+                <View style={styles.container}>
+                    <Image
+                        source={login}
+                        style={styles.image}>
+                    </Image>
                     <Text
-                        style={styles.buttonText}
-                        onPress={this.handleSubmit}>Submit</Text>
-                </TouchableOpacity>
+                        style={styles.text}>Log in</Text>
+                    <TextInput style={styles.inputBox}
+                        placeholder="Email"
+                        placeholderTextColor="#ffffff" />
+                    <TextInput style={styles.inputBox}
+                        placeholder="Password"
+                        secureTextEntry={true}
+                        placeholderTextColor="#ffffff" />
+                    <TouchableOpacity style={styles.button}
+                    /*onPress={ }*/>
+                        <Text
+                            style={styles.buttonText}
+                            onPress={this.handleSubmit}>Submit</Text>
+                    </TouchableOpacity>
+                    <Text
+                        style={{ fontSize: "18px", color: "black" }}>Don't have an account?</Text>
+                    <Text style={{ color: 'blue' }}
+                        onPress={() => <SignupScreen />}>
+                        Signup
+                </Text>
+                </View>
             </View>
+
         )
     }
 }
@@ -58,7 +73,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        color: '#ffffff'
+        fontWeight: 'bold',
+        fontSize: 50,
+        color: '#222DB6',
+        marginBottom: 40
     },
     inputBox: {
         width: "80%",
@@ -67,11 +85,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         fontSize: 16,
         color: '#ffffff',
-        marginVertical: 10
+        marginVertical: 10,
+        height: 50,
+        marginBottom: 20,
+        justifyContent: "center",
+        padding: 20
     },
     buttonText: {
         fontSize: 16,
-        fontWeight: '500',
+        fontWeight: 'bold',
         color: '#ffffff',
         textAlign: 'center'
     },
@@ -80,7 +102,17 @@ const styles = StyleSheet.create({
         width: 100,
         borderRadius: 25,
         marginVertical: 10,
+        borderRadius: 25,
+        height: 50,
+        marginBottom: 20,
+        justifyContent: "center",
+        padding: 20
 
+    },
+    image: {
+        height: 100,
+        width: 100,
+        opacity: "100%"
     },
 
 

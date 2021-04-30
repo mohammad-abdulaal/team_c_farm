@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ImageBackground, StyleSheet, Image, View } from 'react-native';
+import { ImageBackground, StyleSheet, Image, View, Text } from 'react-native';
 
 
 var bg = require('../assets/background.jpg');
@@ -18,6 +18,9 @@ export default class Splash extends Component {
                     source={logo}
                     style={styles.logo}>
                 </Image>
+                <Text
+                    style={styles.text}
+                >Unicorn Farm</Text>
             </View>
             /*</ImageBackground>*/
         );
@@ -31,6 +34,11 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
 
+    },
+    text: {
+
+        fontSize: 100,
+        color: "dark blue",
     },
     logo: {
         height: 300,

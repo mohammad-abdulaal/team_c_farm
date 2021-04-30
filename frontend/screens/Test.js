@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 
 var signup = require('../assets/signup.png');
-export default class SignupScreen extends Component {
+export default class Test extends Component {
     constructor(props) {
         super(props)
         this.state = {
