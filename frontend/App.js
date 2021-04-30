@@ -5,23 +5,20 @@ import { NavigationContainer } from '@react-navigation/native'
 import TabNavigator from './app/navigation/TabNavigator';
 import { Header } from 'react-native-elements';
 import LoginScreen from './screens/LoginScreen';
-//import Splash from './screens/SplashScreen';
+import Splash from './screens/SplashScreen';
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import TabNavigator from "./app/navigation/TabNavigator";
-import { Header } from "react-native-elements";
+
 // import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
   return (
-    /*<Splash />
-   // <LoginScreen />
-  )*/
+    //<Splash />
+    <LoginScreen />
+  )/*
     <SafeAreaProvider>
       <NavigationContainer>
         <Header>
-          {/* <Ionicons name="notifications-circle-outline" size={24} color="black" /> */}
+          { <Ionicons name="notifications-circle-outline" size={24} color="black" /> }
         </Header>
         <TabNavigator />
       </NavigationContainer>

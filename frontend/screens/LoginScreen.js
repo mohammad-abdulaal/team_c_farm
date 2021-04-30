@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 
 export default class LoginScreen extends Component {
@@ -8,26 +8,27 @@ export default class LoginScreen extends Component {
         super(props)
 
         this.state = {
-            loggedIn : false
+            loggedIn: false
         }
     }
     componentDidMount() {
         console.log("I am in component did Mount")
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
     }
-    handleSubmit=e=>{
+    handleSubmit = e => {
         e.preventDefault();
-        const data ={
-            email :this.email,
-            password:this.password,
+        const data = {
+            email: this.email,
+            password: this.password,
         }
     }
     render() {
         return (
             <View style={styles.container}>
-                <Image source={require('../assets/unicorn.png')} />
+                <Text
+                    style={{ fontSize: "100", color: "blue" }}>Log in</Text>
                 <TextInput style={styles.inputBox}
                     placeholder="email"
                     placeholderTextColor="#ffffff" />
@@ -35,8 +36,10 @@ export default class LoginScreen extends Component {
                     placeholder="password"
                     placeholderTextColor="#ffffff" />
                 <TouchableOpacity style={styles.button}
-                onPress={}>
-                    <Text style={styles.buttonText} onPress={this.handleSubmit}>Login</Text>
+                    /*onPress={ }*/>
+                    <Text
+                        style={styles.buttonText}
+                        onPress={this.handleSubmit}>Submit</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -48,21 +51,18 @@ export default class LoginScreen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#1C122A',
-        flex: 1,
+        backgroundColor: '#ffffff',
+        padding: 40,
+        flex: 1.5,
         alignItems: 'center',
         justifyContent: 'center'
     },
     text: {
         color: '#ffffff'
     },
-    image: {
-        width: 40,
-        height: 70
-    },
     inputBox: {
-        width: 300,
-        backgroundColor: 'rgba(255,255,255,0.3)',
+        width: "80%",
+        backgroundColor: '#8BB6EF',
         borderRadius: 25,
         paddingHorizontal: 16,
         fontSize: 16,
@@ -76,13 +76,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     button: {
-        backgroundColor: 'rgba(255,255,255,0.3)',
+        backgroundColor: '#222DB6',
         width: 100,
         borderRadius: 25,
         marginVertical: 10,
 
-    }
+    },
 
 
-})
+});
 
