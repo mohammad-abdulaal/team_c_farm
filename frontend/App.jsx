@@ -16,24 +16,23 @@ const Stack = createStackNavigator();
 
 export default class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       authenticated: true,
-    }
+    };
   }
 
-  render () {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {this.state.authenticated ? (
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
-        ) : (
-          <Stack.Screen name="Login" component={LoginScreen} />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          {this.state.authenticated ? (
+            <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          ) : (
+            <Stack.Screen name="Login" component={LoginScreen} />
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   }
 }
-
