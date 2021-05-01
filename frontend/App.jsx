@@ -1,14 +1,18 @@
-
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
-import TabNavigator from './app/navigation/TabNavigator';
-import { Header } from 'react-native-elements';
-import LoginScreen from './screens/LoginScreen';
-import Splash from './screens/SplashScreen';
+import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Header } from 'react-native-elements';
+
+import TabNavigator from './app/navigation/TabNavigator';
+import Splash from './screens/SplashScreen';
+import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import Test from './screens/Test'; import { Ionicons } from '@expo/vector-icons';
+
+const Stack = createStackNavigator()
+
 
 export default function App() {
   return (
@@ -32,11 +36,6 @@ export default function App() {
   //<LoginScreen/>
   //)
 }
-const AppStackNavigator =createStackNavigator({
-  Login : LoginScreen,
-  Signup : SignupScreen,
-  Splash :Splash
-})
 // {
 //   <Header
 //     placement="left"
