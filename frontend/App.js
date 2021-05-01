@@ -1,21 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import TabNavigator from './app/navigation/TabNavigator';
+import { Header } from 'react-native-elements';
+import LoginScreen from './screens/LoginScreen';
+import Splash from './screens/SplashScreen';
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import SignupScreen from './screens/SignupScreen';
+import Test from './screens/Test'; import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    //<Splash />
+    <AppStackNavigator/>
+    //<LoginScreen />
+    //<SignupScreen />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    // <SafeAreaProvider>
+    //   <NavigationContainer>
+    //     <Header>
+    //       {<Ionicons name="notifications-circle-outline" size={24} color="black" />}
+    //     </Header>
+    //     <TabNavigator />
+    //   </NavigationContainer>
+    // </SafeAreaProvider>
+
+  );
+  //Login space
+  //return (
+  //<LoginScreen/>
+  //)
+}
+const AppStackNavigator =createStackNavigator({
+  Login : LoginScreen,
+  Signup : SignupScreen,
+  Splash :Splash
+})
+// {
+//   <Header
+//     placement="left"
+//     // leftComponent={{ icon: 'menu', color: '#fff' }}
+//     // centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+//     rightComponent={{ icon: 'note', color: '#ffff' }}
+//   />
+// }

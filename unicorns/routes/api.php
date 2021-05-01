@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\UnicornController;
+use App\Http\Controllers\UnicornController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,8 +39,17 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 
 });
+//to add unicorn
+Route::post('unicorns',[UnicornController::class, 'store']);
+//Route::get('unicornss/{unicorn}/show', [UnicornController::class, 'show']); 
+//to get all unicorns
+Route::get('getAll',[UnicornController::class, 'get']);
 
-//get all unicorns 
+//to get unicorn by id 
+Route::get('getbyid/{id}',[UnicornController::class, 'getById']);
 
-//Route::get('/', [UnicorController::class, 'getAll']);
+//to delete unicorn:
+Route::delete('deletebyid/{id}',[UnicornController::class, 'delete']);
 
+//to update unicorn:
+Route::post('updatebyid/{id}',[UnicornController::class, 'update']);
