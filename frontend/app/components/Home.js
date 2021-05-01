@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyleSheet, View, } from 'react-native'
-import  { MasterUnicorn } from './Unicorns/index'
+import  { Unicorn } from './Unicorns/index'
 
 const Home = () => {
     return (
         <View style={styles.appContainer}>
-         <MasterUnicorn />
+         <Unicorn />
         </View>
     )
 }
