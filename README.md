@@ -10,8 +10,8 @@ php artisan serve   # Serves the project locally on our machine
 ### frontend
 ``` sh
 cd frontend
-npm install  
-expo start    # Starts the metro bundler in browser
+yarn install  
+expo start  # or yarn start works 
 ```
 
 
@@ -24,6 +24,7 @@ expo start    # Starts the metro bundler in browser
 | :white_check_mark: | Mobile navbar                          | Mohammad    |
 | in-progress        | Sign in component                      | Mohammad    |
 | in-progress        | Sign up component                      | Fatima      |
+| in-progress        | Move frontend to laravel project              | Louai       |
 | in-progress        | Unicorn listing component              | Louai       |
 |                    | Add new unicorn component              | Louai       |
 |                    | Trade unicorns feature                 | Louai       |
