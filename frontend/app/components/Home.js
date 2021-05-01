@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, } from 'react-native'
-import  { Unicorn } from './Unicorns/index'
+import  { Unicorn } from './Unicorn/index'
 
 const Home = () => {
     return (
