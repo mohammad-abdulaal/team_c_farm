@@ -90,7 +90,7 @@ export class Unicorn extends Component {
       <View>
         {this.state.user.id ? (
           <View>
-            <Text>Add a new unicorn</Text>
+            <Text>Hi {this.state.user.first_name}</Text>
             <TextInput
               onChange={this.handleInput}
               autoCompleteType="off"
