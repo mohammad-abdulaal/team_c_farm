@@ -9,17 +9,18 @@ import {
 } from "react-native";
 import { Card } from "react-native-elements";
 
+// We are pretending to be Bob Smith until the backend is linked
 export class Unicorn extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modIndex: null,
       editmode: false,
-      input: '',
+      input: "",
       user: {
         id: 1,
-        first_name: 'bob',
-        last_name: 'smith',
+        first_name: "bob",
+        last_name: "smith",
       },
       data: [
         {
@@ -53,9 +54,7 @@ export class Unicorn extends Component {
     const entries = this.state.data.map((entry, i) => {
       return (
         <Card key={i}>
-          <Card.Title>
-            {entry.name}
-            </Card.Title>
+          <Card.Title>{entry.name}</Card.Title>
           <Card.Divider />
           {/* Check if we have an owner, otherwise display N/A */}
           <Text>
@@ -92,16 +91,18 @@ export class Unicorn extends Component {
         {this.state.user.id ? (
           <View>
             <Text>Add a new unicorn</Text>
-            <TextInput 
+            <TextInput
               onChange={this.handleInput}
               autoCompleteType="off"
               value={this.state.input}
-            placeholder="unicorn name" />
-            {this.state.editmode ? (<Button 
-              onPress={this.updateUnicorn}
-            title="edit" />) : (<Button 
-              onPress={this.handleAdd}
-            title="+" />) }
+              placeholder="unicorn name"
+            />
+            {/* Am I in edit mode? */}
+            {this.state.editmode ? (
+              <Button onPress={this.updateUnicorn} title="update" />
+            ) : (
+              <Button onPress={this.handleAdd} title="+" />
+            )}
           </View>
         ) : (
           <Text> View Unicorns to the farm</Text>
@@ -115,16 +116,16 @@ export class Unicorn extends Component {
   handleInput = (e) => {
     this.setState({
       input: e.target.value,
-    })
-  }
+    });
+  };
 
   handleAdd = () => {
     // Get last id to create new one
-    let currentData = this.state.data
+    let currentData = this.state.data;
     if (currentData.length > 0) {
-      var newid = currentData[currentData.length - 1].id + 1
+      var newid = currentData[currentData.length - 1].id + 1;
     } else {
-      var newid = 0
+      var newid = 0;
     }
 
     // Create new unicorn object
@@ -139,33 +140,36 @@ export class Unicorn extends Component {
     };
 
     // Add new unicorn object to data then clear input
-    this.setState(state => ({
-      data: [...state.data,  newUnicorn ],
-      input: '',
-    }))
-  } 
+    this.setState((state) => ({
+      data: [...state.data, newUnicorn],
+      input: "",
+    }));
+  };
 
   // Edit an existing unicorn
   handleEdit = (index) => {
-    this.setState(state => ({
+    // Switch to edit mode then send selected index to modify
+    this.setState((state) => ({
       editmode: !state.editmode,
       input: state.data[index].name,
       modIndex: index,
-    }))
-  }
+    }));
+  };
 
   updateUnicorn = () => {
+    // Copy data, edit at modIndex and send back
     this.setState((state) => {
-      const data = [...state.data]
-      data[this.state.modIndex].name = state.input
-      return { data}
-    })
+      const data = [...state.data];
+      data[this.state.modIndex].name = state.input;
+      return { data };
+    });
 
-    this.setState(state => ({
-      input: '',
+    // Clear input and disable edit mode
+    this.setState((state) => ({
+      input: "",
       editmode: !state.editmode,
-    }))
-  }
+    }));
+  };
 
   // Handle delete unicorn from view
   handleDelete = (index) => {
