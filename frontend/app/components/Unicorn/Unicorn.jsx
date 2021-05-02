@@ -15,7 +15,7 @@ export class Unicorn extends Component {
     this.last_id = 56;
     this.state = {
       user: null,
-      user_id: 0,
+      user_id: 55,
       data: [
         {
           id: 1,
@@ -23,29 +23,23 @@ export class Unicorn extends Component {
           owner: {
             id: 111,
             first_name: "alice",
-            last_name: "",
+            last_name: "grace",
           },
         },
         {
           id: 2,
           name: "arcturus",
           owner: {
-            id: 111,
+            id: 55,
             first_name: "bob",
-            last_name: "",
+            last_name: "mcdonald",
           },
         },
         {
           id: 3,
           name: "vega",
-          owner: {
-            id: "none",
-            first_name: "charlie",
-            last_name: "",
-          },
         },
       ],
-
       unicorn_id: 0,
       unicorn_name: "",
       unicorn_owner: "",
@@ -53,12 +47,13 @@ export class Unicorn extends Component {
   }
 
   render() {
-    const entries = this.state.data.map((e, i) => {
+    const entries = this.state.data.map((entry, i) => {
       return (
         <Card key={i}>
-          <Card.Title>{e.name}</Card.Title>
+          <Card.Title>{entry.name}</Card.Title>
           <Card.Divider />
-          <Text>owner: {e.owner.first_name}</Text>
+          {/* Check if we have an owner, otherwise display N/A */}
+          <Text>owner: {entry.owner ? entry.owner.first_name + " " + entry.owner.last_name : "N/A"}</Text>
           <View style={{ flexDirection: "row" }}>
             <Button
               onPress={() => this.handleDelete(i)}
@@ -66,6 +61,8 @@ export class Unicorn extends Component {
               color="#841584"
             />
             <Button
+            // Check if we have an owner or if the owner is not the current user
+              disabled={entry.owner == null || entry.owner.id != this.state.user_id }
               onPress={() => this.handleEdit(i)}
               title="edit"
               color="#841584"
