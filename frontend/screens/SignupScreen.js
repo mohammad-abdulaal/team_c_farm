@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 
 var signup = require('../assets/signup.png');
-export default class SignupScreen extends Component {
+/*export default class SignupScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -23,37 +23,40 @@ export default class SignupScreen extends Component {
             last_name: this.last_name,
         }
     }
-    render() {
-        return (
-            <View style={styles.container}>
-                <Image
-                    source={signup}
-                    style={styles.image}>
-                </Image>
-                <Text
-                    style={{ fontSize: "40px", color: "#222DB6" }}>Signup</Text>
-                <Image source={require('../assets/unicorn.png')} />
-                <TextInput style={styles.inputBox}
-                    placeholder="First Name"
-                    placeholderTextColor="#ffffff" />
-                <TextInput style={styles.inputBox}
-                    placeholder="Last Name"
-                    placeholderTextColor="#ffffff" />
-                <TextInput style={styles.inputBox}
-                    placeholder="Email"
-                    placeholderTextColor="#ffffff" />
-                <TextInput style={styles.inputBox}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    placeholderTextColor="#ffffff" />
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText} onPress={this.handleSubmit}>Submit</Text>
-                </TouchableOpacity>
-            </View>
-        )
-    }
-}
+    render() {*/
 
+const SignupScreen = ({ navigation }) => {
+    return (
+        <View style={styles.container}>
+            <Image
+                source={signup}
+                style={styles.image}>
+            </Image>
+            <Text
+                style={{ fontSize: "40px", color: "#222DB6" }}>Signup</Text>
+            <Image source={require('../assets/unicorn.png')} />
+            <TextInput style={styles.inputBox}
+                placeholder="First Name"
+                placeholderTextColor="#ffffff" />
+            <TextInput style={styles.inputBox}
+                placeholder="Last Name"
+                placeholderTextColor="#ffffff" />
+            <TextInput style={styles.inputBox}
+                placeholder="Email"
+                placeholderTextColor="#ffffff" />
+            <TextInput style={styles.inputBox}
+                placeholder="Password"
+                secureTextEntry={true}
+                placeholderTextColor="#ffffff" />
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LoginScreen')}>
+                <Text style={styles.buttonText}
+                >Submit</Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
+//}
+export default SignupScreen;
 
 
 
