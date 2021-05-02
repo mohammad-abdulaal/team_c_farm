@@ -101,7 +101,12 @@ export class Unicorn extends Component {
             {this.state.editmode ? (
               <Button onPress={this.updateUnicorn} title="update" />
             ) : (
-              <Button onPress={this.handleAdd} title="+" />
+              <Button
+                // Prevent blank user input
+                disabled={this.state.input.length == 0}
+                onPress={this.handleAdd}
+                title="+"
+              />
             )}
           </View>
         ) : (
