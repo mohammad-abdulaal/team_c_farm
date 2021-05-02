@@ -12,10 +12,15 @@ import { Card } from "react-native-elements";
 export class Unicorn extends Component {
   constructor(props) {
     super(props);
-    this.last_id = 56;
     this.state = {
-      user: null,
-      user_id: 55,
+      modIndex: null,
+      editmode: false,
+      input: '',
+      user: {
+        id: 1,
+        first_name: 'bob',
+        last_name: 'smith',
+      },
       data: [
         {
           id: 1,
@@ -30,9 +35,9 @@ export class Unicorn extends Component {
           id: 2,
           name: "arcturus",
           owner: {
-            id: 55,
+            id: 1,
             first_name: "bob",
-            last_name: "mcdonald",
+            last_name: "smith",
           },
         },
         {
@@ -40,9 +45,7 @@ export class Unicorn extends Component {
           name: "vega",
         },
       ],
-      unicorn_id: 0,
-      unicorn_name: "",
-      unicorn_owner: "",
+      // data: [],
     };
   }
 
@@ -50,19 +53,31 @@ export class Unicorn extends Component {
     const entries = this.state.data.map((entry, i) => {
       return (
         <Card key={i}>
-          <Card.Title>{entry.name}</Card.Title>
+          <Card.Title>
+            {entry.name}
+            </Card.Title>
           <Card.Divider />
           {/* Check if we have an owner, otherwise display N/A */}
-          <Text>owner: {entry.owner ? entry.owner.first_name + " " + entry.owner.last_name : "N/A"}</Text>
+          <Text>
+            owner:{" "}
+            {entry.owner
+              ? entry.owner.first_name + " " + entry.owner.last_name
+              : "N/A"}
+          </Text>
           <View style={{ flexDirection: "row" }}>
             <Button
+              disabled={
+                entry.owner == null || entry.owner.id != this.state.user.id
+              }
               onPress={() => this.handleDelete(i)}
               title="delete"
               color="#841584"
             />
             <Button
-            // Check if we have an owner or if the owner is not the current user
-              disabled={entry.owner == null || entry.owner.id != this.state.user_id }
+              // Check if we have an owner or if the owner is not the current user
+              disabled={
+                entry.owner == null || entry.owner.id != this.state.user.id
+              }
               onPress={() => this.handleEdit(i)}
               title="edit"
               color="#841584"
@@ -72,65 +87,93 @@ export class Unicorn extends Component {
       );
     });
 
-    return <ScrollView>{entries}</ScrollView>;
+    return (
+      <View>
+        {this.state.user.id ? (
+          <View>
+            <Text>Add a new unicorn</Text>
+            <TextInput 
+              onChange={this.handleInput}
+              autoCompleteType="off"
+              value={this.state.input}
+            placeholder="unicorn name" />
+            {this.state.editmode ? (<Button 
+              onPress={this.updateUnicorn}
+            title="edit" />) : (<Button 
+              onPress={this.handleAdd}
+            title="+" />) }
+          </View>
+        ) : (
+          <Text> View Unicorns to the farm</Text>
+        )}
+        <ScrollView>{entries}</ScrollView>
+      </View>
+    );
   }
 
   // Member functions
+  handleInput = (e) => {
+    this.setState({
+      input: e.target.value,
+    })
+  }
 
-  handleAdd = (e, id) => {
-    if (id === 0) {
-      // Add new unicorn
-      this.last_id = this.last_id + 1;
-      let newUnicorn = {
-        id: this.last_id,
-        name: this.state.unicorn_name,
-        owner: this.props.user,
-      };
-
-      this.setState((state) => ({
-        data: [...state.data, { newUnicorn }],
-      }));
+  handleAdd = () => {
+    // Get last id to create new one
+    let currentData = this.state.data
+    if (currentData.length > 0) {
+      var newid = currentData[currentData.length - 1].id + 1
     } else {
-      let unicorns_new = [];
-      for (let i = 0; i < this.state.data.length; i++) {
-        if (this.state.data[i].id === id) {
-          let updatedObject = {
-            id: id,
-            name: this.state.unicorn_name,
-            owner: this.state.data[i].owner,
-          };
-          unicorns_new.push(updatedObject);
-        } else {
-          unicorns_new.push(this.state.unicorns[i]);
-        }
-      }
-
-      this.setState({
-        unicorns: unicorns_new,
-      });
+      var newid = 0
     }
-  };
+
+    // Create new unicorn object
+    let newUnicorn = {
+      id: newid,
+      name: this.state.input,
+      owner: {
+        id: this.state.user.id,
+        first_name: this.state.user.first_name,
+        last_name: this.state.user.last_name,
+      },
+    };
+
+    // Add new unicorn object to data then clear input
+    this.setState(state => ({
+      data: [...state.data,  newUnicorn ],
+      input: '',
+    }))
+  } 
+
+  // Edit an existing unicorn
+  handleEdit = (index) => {
+    this.setState(state => ({
+      editmode: !state.editmode,
+      input: state.data[index].name,
+      modIndex: index,
+    }))
+  }
+
+  updateUnicorn = () => {
+    this.setState((state) => {
+      const data = [...state.data]
+      data[this.state.modIndex].name = state.input
+      return { data}
+    })
+
+    this.setState(state => ({
+      input: '',
+      editmode: !state.editmode,
+    }))
+  }
 
   // Handle delete unicorn from view
   handleDelete = (index) => {
     this.setState((state) => {
+      // Copy old data and remove current index
       const data = [...state.data];
       data.splice(index, 1);
       return { data };
-    });
-  };
-
-  getOne = (unicorn) => {
-    this.setState({
-      unicorn_id: unicorn.id,
-      unicorn_name: unicorn.name,
-      unicorn_owner: unicorn.owner,
-    });
-  };
-
-  nameChange = (e) => {
-    this.setState({
-      unicorn_name: e.target.value,
     });
   };
 }
