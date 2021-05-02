@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyleSheet, View, } from 'react-native'
 import  { Unicorn } from './Unicorn/index'
+import Constants from 'expo-constants';
+
 
 const Home = () => {
     return (
@@ -15,6 +17,7 @@ const styles = StyleSheet.create({
         flex:3,
         justifyContent:'center',
         alignItems:'center',
+        paddingTop: Constants.statusBarHeight,
     },
     text:{
         fontSize:20,
