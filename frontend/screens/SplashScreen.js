@@ -1,55 +1,52 @@
 import React, { Component } from "react";
 import { ImageBackground, StyleSheet, Image, View, Text } from 'react-native';
 
+var logo = require('../assets/logo.png')
+var gif = require('../assets/rainbow4.gif')
 
-var bg = require('../assets/background.jpg');
-var logo = require('../assets/logo.png');
-
-export default class Splash extends Component {
-
+import { StatusBar, ActivityIndicator } from 'react-native';
+export default class SplashScreen extends React.Component {
     render() {
         return (
-            /*<ImageBackground
-                source={bg}
-                style={styles.background}>*/
-            <View
-                style={styles.view}>
-                <Image
-                    source={logo}
-                    style={styles.logo}>
-                </Image>
-                <Text
-                    style={styles.text}
-                >Unicorn Farm</Text>
+
+            <View style={styles.view} >
+                <ImageBackground
+                    resizeMode='contain'
+                    style={styles.background}
+                    source={gif}>
+                    <Image resizeMode='contain'
+                        style={styles.logo}
+                        source={logo} />
+                </ImageBackground>
             </View>
-            /*</ImageBackground>*/
+
         );
     }
-}
 
+}
 
 
 const styles = StyleSheet.create({
     background: {
         height: '100%',
         width: '100%',
+        alignItems: 'center',
 
-    },
-    text: {
 
-        fontSize: 100,
-        color: "blue",
     },
     logo: {
-        height: 300,
-        width: 300,
-        opacity: 100
+        height: '100%',
+        width: '100%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+
     },
     view: {
-        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'column'
+
     }
 
 })
-

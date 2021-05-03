@@ -1,23 +1,38 @@
-import "react-native-gesture-handler";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-// import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Header } from "react-native-elements";
-
 import TabNavigator from "./app/navigation/TabNavigator";
-import { Ionicons } from "@expo/vector-icons";
 import MyStack from "./Stack";
+import SplashScreen from "./screens/SplashScreen";
 const Stack = createStackNavigator();
 let authenticated = false;
-export default function App() {
-  return (
-    <NavigationContainer>
-      {authenticated ? (
-        <TabNavigator />
-      ) : (
-        <MyStack />)}
-    </NavigationContainer>
-  );
+
+
+export default class App extends React.Component {
+
+  componentWillMount() {
+    this.state = {
+      view: <SplashScreen />
+    };
+
+
+    setTimeout(() => {
+      this.setState({
+        view: <NavigationContainer>
+          {authenticated ? (
+            <TabNavigator />
+          ) : (
+            <MyStack />)}
+        </NavigationContainer>
+      })
+    }, 4000) //TIME OF WAITING
+
+
+  }
+
+  render() {
+    return (
+      this.state.view
+    )
+  }
 }
