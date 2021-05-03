@@ -27,8 +27,8 @@ expo start  # or yarn start works
 | :white_check_mark: | Figure out what the components will be | Louai       |
 | in-progress        | SplashScreen component                 | fatima      |
 | :white_check_mark: | Mobile navbar                          | Mohammad    |
-| in-progress        | Sign in component                      | Mohammad    |
-| in-progress        | Sign up component                      | Fatima      |
+| :white_check_mark: | Sign in component                      | Mohammad    |
+| :white_check_mark: | Sign up component                      | Fatima      |
 | :white_check_mark: | Unicorn component(add, delete, update) | Louai       |
 | in-progress        | Move frontend to laravel project       | Louai       |
 | in-progress        | Trade unicorns component               | Louai       |
