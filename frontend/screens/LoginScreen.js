@@ -1,63 +1,58 @@
 import React from 'react';
-import { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
-import SignupScreen from './SignupScreen'
-import { Button } from 'react-native';
 import TabNavigator from '../app/navigation/TabNavigator'
-import { NavigationContainer } from '@react-navigation/native';
-import color from 'color';
+import Login from '../app/components/Login'
 var login = require('../assets/login.png');
+
+//let loggedIn = Login.loggedIn;
+//let loggedIn=true;
+let autherized = true;
 
 const LoginScreen = ({ navigation }) => {
     return (
-        <View>
-
-            <View style={styles.container}>
-                <Image
-                    source={login}
-                    style={styles.image}>
-                </Image>
-                <Text
-                    style={styles.text}>Log in
+        <View style={styles.container}>
+            <Image
+                source={login}
+                resizeMode="contain"
+                style={styles.image}>
+            </Image>
+            <Text
+                style={styles.text}>Log in
                     </Text>
-                <TextInput style={styles.inputBox}
-                    placeholder="Email"
-                    placeholderTextColor="#ffffff"
-                />
-                <TextInput style={styles.inputBox}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    placeholderTextColor="#ffffff" />
+            <TextInput style={styles.inputBox}
+                placeholder="Email"
+                placeholderTextColor="#ffffff"
+            />
+            <TextInput style={styles.inputBox}
+                placeholder="Password"
+                secureTextEntry={true}
+                placeholderTextColor="#ffffff" />
 
-                <TouchableOpacity style={styles.button}
-                    onPress={() => navigation.navigate('TabNavigator')}>
-                    <Text style={styles.buttonText}
-                    >Submit</Text>
-                </TouchableOpacity>
-                <Text
-                    style={{ fontSize: "18px", color: "black" }}>
-                    Don't have an account?</Text>
-                <TouchableOpacity style={styles.link}
-                    onPress={() => navigation.navigate('SignupScreen')}>
-                    <Text style={{ color: 'blue' }}
-                    >Signup</Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.button}
+                onPress={autherized ? (() => navigation.navigate(TabNavigator)) :
+                    (() => alert("Enter Valid username and Password"))}>
+                <Text style={styles.buttonText}
+                >Submit</Text>
+            </TouchableOpacity>
+            <Text
+                style={{ fontSize: 18, color: "black" }}>
+                Don't have an account?</Text>
+            <TouchableOpacity style={styles.link}
+                onPress={() => navigation.navigate('SignupScreen')}>
+                <Text style={{ color: 'blue' }}
+                >Signup</Text>
+            </TouchableOpacity>
         </View>
-
     )
 }
 export default LoginScreen;
-
-
-
 
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ffffff',
         padding: 40,
-        flex: 1.5,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -83,8 +78,9 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         height: 50,
         marginBottom: 20,
-        justifyContent: "center",
-        padding: 20
+        //justifyContent: "center",
+        //alignItems: "center"
+        //padding: 20
     },
     buttonText: {
         fontSize: 16,
@@ -101,7 +97,7 @@ const styles = StyleSheet.create({
         height: 50,
         marginBottom: 20,
         justifyContent: "center",
-        padding: 20
+        //padding: 20
 
     },
     image: {
@@ -112,4 +108,5 @@ const styles = StyleSheet.create({
 
 
 });
+
 

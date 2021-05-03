@@ -10,7 +10,7 @@ import TabNavigator from "./app/navigation/TabNavigator";
 import { Ionicons } from "@expo/vector-icons";
 import MyStack from "./Stack";
 const Stack = createStackNavigator();
-let authenticated = true
+let authenticated = false;
 export default function App() {
   return (
     <NavigationContainer>
