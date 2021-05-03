@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "UnicornFarm Bestie",
     "slug": "frontend",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -26,6 +26,18 @@
       }
     },
     "web": {
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyAeuWSGGiQn_BbC2FHwCBiI6ODhsDjD13M",
+          "authDomain": "unicorns-abf7f.firebaseapp.com",
+          "databaseURL": "https://unicorns-abf7f-default-rtdb.firebaseio.com",
+          "projectId": "unicorns-abf7f",
+          "storageBucket": "unicorns-abf7f.appspot.com",
+          "messagingSenderId": "176725719724",
+          "appId": "1:176725719724:web:50ff87621038cde02a7d09"
+        }
+
+      },
       "favicon": "./assets/favicon.png"
     },
     "description": ""

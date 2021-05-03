@@ -19,6 +19,6 @@ class Unicorn extends Model
 
     public function user(){
         //belong to one user only 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     } 
 }

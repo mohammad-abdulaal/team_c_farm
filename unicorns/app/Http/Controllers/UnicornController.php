@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Unicorn;
+use App\Models\User;
+//use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UnicornController extends Controller
 {
+    //Auth.user
     //getAll unicorns 
     public function get(){
         $res = [
@@ -41,10 +45,15 @@ class UnicornController extends Controller
         'name' => 'required|string',        
         ]);
         
+        $user_id= auth()->user()->id;
+        //$user = Auth::user();
+
+        //return response()->json($user, 200);
         $unicorn =
         Unicorn::create([
         'name' => $attributes['name'],
-        'user_id' => null
+        //'user_id' => null
+        'user_id'=>$user_id
         
         ]);       
         return response()->json($unicorn, 200);

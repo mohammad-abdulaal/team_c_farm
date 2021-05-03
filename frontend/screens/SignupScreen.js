@@ -2,12 +2,12 @@ import React from 'react';
 import { Component } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 
-
-export default class SignupScreen extends Component {
+var signup = require('../assets/signup.png');
+/*export default class SignupScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            registered : false
+            registered: false
         }
         this.email = ''
         this.password = ''
@@ -17,76 +17,99 @@ export default class SignupScreen extends Component {
     handleSubmit = e => {
         e.preventDefault()
         const data = {
-            email : this.email,
-            password :this.password,
+            email: this.email,
+            password: this.password,
             first_name: this.first_name,
             last_name: this.last_name,
         }
     }
-    render() {
-        return (
-            <View style={styles.container}>
-                <Image source={require('../assets/unicorn.png')} />
-                <TextInput style={styles.inputBox}
-                    placeholder="first_name"
-                    placeholderTextColor="#ffffff" />
-                <TextInput style={styles.inputBox}
-                    placeholder="last_name"
-                    placeholderTextColor="#ffffff" />
-                <TextInput style={styles.inputBox}
-                    placeholder="email"
-                    placeholderTextColor="#ffffff" />
-                <TextInput style={styles.inputBox}
-                    placeholder="password"
-                    placeholderTextColor="#ffffff" />
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText} onPress={this.handleSubmit}>Sign Up</Text>
-                </TouchableOpacity>
-            </View>
-        )
-    }
-}
+    render() {*/
 
+const SignupScreen = ({ navigation }) => {
+    return (
+        <View style={styles.container}>
+            <Image
+                source={signup}
+                style={styles.image}>
+            </Image>
+            <Text
+                style={{ fontSize: "40px", color: "#222DB6" }}>Signup</Text>
+            <Image source={require('../assets/unicorn.png')} />
+            <TextInput style={styles.inputBox}
+                placeholder="First Name"
+                placeholderTextColor="#ffffff" />
+            <TextInput style={styles.inputBox}
+                placeholder="Last Name"
+                placeholderTextColor="#ffffff" />
+            <TextInput style={styles.inputBox}
+                placeholder="Email"
+                placeholderTextColor="#ffffff" />
+            <TextInput style={styles.inputBox}
+                placeholder="Password"
+                secureTextEntry={true}
+                placeholderTextColor="#ffffff" />
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LoginScreen')}>
+                <Text style={styles.buttonText}
+                >Submit</Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
+//}
+export default SignupScreen;
 
 
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#1C122A',
-        flex: 1,
+        backgroundColor: '#ffffff',
+        padding: 40,
+        flex: 1.5,
         alignItems: 'center',
         justifyContent: 'center'
     },
     text: {
-        color: '#ffffff'
-    },
-    image: {
-        width: 40,
-        height: 70
+        fontWeight: 'bold',
+        fontSize: 50,
+        color: '#222DB6',
+        marginBottom: 40
     },
     inputBox: {
-        width: 300,
-        backgroundColor: 'rgba(255,255,255,0.3)',
+        width: "80%",
+        backgroundColor: '#8BB6EF',
         borderRadius: 25,
         paddingHorizontal: 16,
         fontSize: 16,
         color: '#ffffff',
-        marginVertical: 10
+        marginVertical: 10,
+        height: 50,
+        marginBottom: 20,
+        justifyContent: "center",
+        padding: 20
     },
     buttonText: {
         fontSize: 16,
-        fontWeight: '500',
+        fontWeight: 'bold',
         color: '#ffffff',
         textAlign: 'center'
     },
     button: {
-        backgroundColor: 'rgba(255,255,255,0.3)',
+        backgroundColor: '#222DB6',
         width: 100,
         borderRadius: 25,
         marginVertical: 10,
+        borderRadius: 25,
+        height: 50,
+        marginBottom: 20,
+        justifyContent: "center",
+        padding: 20
 
-    }
+    },
+    image: {
+        height: 100,
+        width: 100,
+        // opacity: ''
+    },
 
 
-})
-
+});

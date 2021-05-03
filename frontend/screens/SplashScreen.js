@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ImageBackground, StyleSheet, Image, View } from 'react-native';
+import { ImageBackground, StyleSheet, Image, View, Text } from 'react-native';
 
 
 var bg = require('../assets/background.jpg');
@@ -9,16 +9,20 @@ export default class Splash extends Component {
 
     render() {
         return (
-            <ImageBackground
+            /*<ImageBackground
                 source={bg}
-                style={styles.background}>
-                <View
-                    style={styles.view}>
-                    <Image
-                        source={logo}
-                        style={styles.logo}></Image>
-                </View>
-            </ImageBackground>
+                style={styles.background}>*/
+            <View
+                style={styles.view}>
+                <Image
+                    source={logo}
+                    style={styles.logo}>
+                </Image>
+                <Text
+                    style={styles.text}
+                >Unicorn Farm</Text>
+            </View>
+            /*</ImageBackground>*/
         );
     }
 }
@@ -28,11 +32,18 @@ export default class Splash extends Component {
 const styles = StyleSheet.create({
     background: {
         height: '100%',
-        width: '100%'
+        width: '100%',
+
+    },
+    text: {
+
+        fontSize: 100,
+        color: "blue",
     },
     logo: {
-        height: 200,
-        width: 200
+        height: 300,
+        width: 300,
+        opacity: 100
     },
     view: {
         flex: 1,

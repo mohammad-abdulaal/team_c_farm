@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnicornController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,8 +16,29 @@ use App\Http\Controllers\UnicornController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/register', [AuthController::class, 'register']);
+
+
+
+
+Route::group(['middleware' => 'auth:api'], function () {
+
+    Route::get('/details', [AuthController::class, 'details']);
+
+    Route::get('/logout', [AuthController::class, 'logout']);
+    //return $request->user();
+
+    //Unicorns apis go here
+
+
+
+
 });
 //to add unicorn
 Route::post('unicorns',[UnicornController::class, 'store']);
