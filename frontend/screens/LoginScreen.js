@@ -4,6 +4,7 @@ import TabNavigator from '../app/navigation/TabNavigator'
 import Login from '../app/components/Login'
 var login = require('../assets/login.png');
 
+
 //let loggedIn = Login.loggedIn;
 //let loggedIn=true;
 let autherized = true;
