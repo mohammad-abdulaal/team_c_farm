@@ -1,30 +1,7 @@
 import React from 'react';
-import { Component } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 
 var signup = require('../assets/signup.png');
-/*export default class SignupScreen extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            registered: false
-        }
-        this.email = ''
-        this.password = ''
-        this.first_name = ''
-        this.last_name = ''
-    }
-    handleSubmit = e => {
-        e.preventDefault()
-        const data = {
-            email: this.email,
-            password: this.password,
-            first_name: this.first_name,
-            last_name: this.last_name,
-        }
-    }
-    render() {*/
-
 const SignupScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
@@ -33,8 +10,7 @@ const SignupScreen = ({ navigation }) => {
                 style={styles.image}>
             </Image>
             <Text
-                style={{ fontSize: "40px", color: "#222DB6" }}>Signup</Text>
-            <Image source={require('../assets/unicorn.png')} />
+                style={{ fontSize: 40, color: "#222DB6" }}>Signup</Text>
             <TextInput style={styles.inputBox}
                 placeholder="First Name"
                 placeholderTextColor="#ffffff" />
@@ -48,7 +24,8 @@ const SignupScreen = ({ navigation }) => {
                 placeholder="Password"
                 secureTextEntry={true}
                 placeholderTextColor="#ffffff" />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LoginScreen')}>
+            <TouchableOpacity style={styles.button}
+                onPress={() => navigation.navigate('LoginScreen')}>
                 <Text style={styles.buttonText}
                 >Submit</Text>
             </TouchableOpacity>
@@ -64,7 +41,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ffffff',
         padding: 40,
-        flex: 1.5,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -85,7 +62,7 @@ const styles = StyleSheet.create({
         height: 50,
         marginBottom: 20,
         justifyContent: "center",
-        padding: 20
+        //padding: 20
     },
     buttonText: {
         fontSize: 16,
@@ -102,7 +79,7 @@ const styles = StyleSheet.create({
         height: 50,
         marginBottom: 20,
         justifyContent: "center",
-        padding: 20
+        //padding: 20
 
     },
     image: {
