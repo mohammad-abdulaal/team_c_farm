@@ -1,12 +1,14 @@
+import "react-native-gesture-handler";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+// import { SafeAreaProvider } from "react-native-safe-area-context";
 import TabNavigator from "./app/navigation/TabNavigator";
 import MyStack from "./Stack";
 import SplashScreen from "./screens/SplashScreen";
 const Stack = createStackNavigator();
-let authenticated = false;
-
+var storage = localStorage.getItem('user_id')
 
 export default class App extends React.Component {
 
@@ -19,7 +21,7 @@ export default class App extends React.Component {
     setTimeout(() => {
       this.setState({
         view: <NavigationContainer>
-          {authenticated ? (
+          {storage ? (
             <TabNavigator />
           ) : (
             <MyStack />)}

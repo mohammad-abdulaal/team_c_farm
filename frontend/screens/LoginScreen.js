@@ -1,15 +1,51 @@
-import React from 'react';
+import React, { useState, createRef } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
-import TabNavigator from '../app/navigation/TabNavigator'
-import Login from '../app/components/Login'
+import axios from 'axios';
+//import TabNavigator from '../app/navigation/TabNavigator'
+// import CookieService from '../app/components/CookieService';
+// import api from '../app/components/api';
 var login = require('../assets/login.png');
 
 
-//let loggedIn = Login.loggedIn;
-//let loggedIn=true;
-let autherized = true;
+
 
 const LoginScreen = ({ navigation }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [errortext, setErrortext] = useState('');
+    const passwordInputRef = createRef();
+
+    const handleSubmitPress = () => {
+
+        setErrortext('');
+        if (!email) {
+            alert("Enter a valid email");
+            return;
+        }
+        if (!password) {
+            alert("Fill password");
+            return;
+        }
+
+        let data = { email: email, password: password, /*remember_token: remember */ }
+        axios.post('http://127.0.0.1:8000/api/login', data)
+            .then((response) => {
+                console.log(response.status)
+                if (response.status === 200) {
+                    localStorage.setItem('user_id', data.email)
+                    localStorage.setItem('user_id', data)
+                    navigation.replace('TabNavigator');
+                    console.log("working bestue")
+                } else { alert("invalid username and password") }
+            })
+            .catch((error) => {
+                let errortext = error
+                console.log(error)
+            })
+
+
+    }
     return (
         <View style={styles.container}>
             <Image
@@ -20,18 +56,45 @@ const LoginScreen = ({ navigation }) => {
             <Text
                 style={styles.text}>Log in
                     </Text>
-            <TextInput style={styles.inputBox}
-                placeholder="Email"
+            <TextInput
+                style={styles.inputBox}
+                onChangeText={(email) =>
+                    setEmail(email)
+                }
+                placeholder="Enter Email"
                 placeholderTextColor="#ffffff"
+                autoCapitalize="none"
+                keyboardType="email-address"
+                returnKeyType="next"
+                onSubmitEditing={() =>
+                    passwordInputRef.current &&
+                    passwordInputRef.current.focus()
+                }
+                underlineColorAndroid="#f000"
+                blurOnSubmit={false}
             />
-            <TextInput style={styles.inputBox}
-                placeholder="Password"
+            <TextInput
+                style={styles.inputBox}
+                onChangeText={(password) =>
+                    setPassword(password)
+                }
+                placeholder="Enter Password"
+                placeholderTextColor="#ffffff"
+                keyboardType="default"
+                ref={passwordInputRef}
+                onSubmitEditing={Keyboard.dismiss}
+                blurOnSubmit={false}
                 secureTextEntry={true}
-                placeholderTextColor="#ffffff" />
-
+                underlineColorAndroid="#f000"
+                returnKeyType="next"
+            />
+            {errortext != '' ? (
+                <Text style={styles.error}>
+                    {errortext}
+                </Text>
+            ) : null}
             <TouchableOpacity style={styles.button}
-                onPress={autherized ? (() => navigation.navigate(TabNavigator)) :
-                    (() => alert("Enter Valid username and Password"))}>
+                onPress={handleSubmitPress}>
                 <Text style={styles.buttonText}
                 >Submit</Text>
             </TouchableOpacity>
@@ -56,6 +119,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    error: {
+        color: 'red',
+        textAlign: 'center',
+        fontSize: 14,
     },
     text: {
         fontWeight: 'bold',
@@ -105,9 +173,7 @@ const styles = StyleSheet.create({
         height: 100,
         width: 100,
         opacity: 100
-    },
+    }
 
 
-});
-
-
+})
