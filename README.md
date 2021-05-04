@@ -7,11 +7,30 @@
 ```sh
 cd unicorns
 composer install    # Generates vendor folder which contains required packages
-php artisan serve   # Serves the project locally on our machine
+composer require laravel/passport
+```
+
+#### database setup
+open mysql console 
+```sql
+create database unicorns;
+exit
+```
+Edit in vscode the `unicorns/.env` file
+```
+DB_USERNAME=[your_user_name]
+DB_PASSWORD=[your_password]
+```
+
+``` sh
+php artisan migrate
+php artisan passport:install
+php artisan passport:client --personal
+# The prompt will ask you for a name, use personal token
+php artisan serve
 ```
 
 ### frontend
-
 ```sh
 cd frontend
 yarn install
