@@ -8,8 +8,7 @@ import {
   Button,
 } from "react-native";
 import { Card } from "react-native-elements";
-import Axios from 'axios'
-
+import Axios from "axios";
 
 // We are pretending to be Bob Smith until the backend is linked
 export class Unicorn extends Component {
@@ -31,21 +30,23 @@ export class Unicorn extends Component {
 
   // Prepare to receive data from backend
   componentDidMount() {
-    this.getAll()
+    this.getAll();
   }
 
+  // Call getAll api and set data in state
   getAll() {
-    Axios.get("http://localhost:8000/api/getAll")
-    .then ((res) => {
-      console.log('get all', res.data)
+    Axios.get("http://localhost:8000/api/getAll").then((res) => {
+      console.log("get all", res.data);
       this.setState({
         data: res.data.all,
-      })
-      console.log(res)
-    })
+      });
+      // console.log(res)
+    });
   }
 
   render() {
+    // Loop over all unicorns and create a card for each
+    // Start reading at line 87
     const entries = this.state.data.map((entry, i) => {
       return (
         <Card key={i}>
@@ -82,6 +83,7 @@ export class Unicorn extends Component {
     });
 
     return (
+      // Main view
       <View>
         {this.state.user.id ? (
           <View>
@@ -98,7 +100,7 @@ export class Unicorn extends Component {
             ) : (
               <Button
                 // Prevent blank user input
-                // disabled={this.state.input.length == 0}
+                disabled={this.state.input.length == 0}
                 onPress={this.handleAdd}
                 title="+"
               />
@@ -146,7 +148,8 @@ export class Unicorn extends Component {
       input: "",
     }));
 
-    Axios.post("http://localhost:8000/api/unicorns", newUnicorn)
+    // Update backend
+    Axios.post("http://localhost:8000/api/unicorns", newUnicorn);
   };
 
   // Edit an existing unicorn
@@ -164,7 +167,7 @@ export class Unicorn extends Component {
       id: this.state.data[this.state.modIndex].id,
       name: this.state.input,
       owner: this.state.user,
-    }
+    };
 
     // Copy data, edit at modIndex and send back
     this.setState((state) => {
@@ -174,16 +177,24 @@ export class Unicorn extends Component {
       return { data };
     });
 
-    console.log("The updated unicorn obejct\n",  updatedUnicorn)
-    console.log("The updated unicorn id\n", this.state.data[this.state.modIndex].id)
-    Axios.post(`http://localhost:8000/api/updatebyid/${this.state.data[this.state.modIndex].id}`, updatedUnicorn),
+    /*
+     * console.log("The updated unicorn obejct\n",  updatedUnicorn)
+     * console.log("The updated unicorn id\n", this.state.data[this.state.modIndex].id)
+     */
 
-    // Clear input and disable edit mode
-    this.setState((state) => ({
-      input: "",
-      editmode: !state.editmode,
-      modIndex: null,
-    }));
+    // Update backend
+    Axios.post(
+      `http://localhost:8000/api/updatebyid/${
+        this.state.data[this.state.modIndex].id
+      }`,
+      updatedUnicorn
+    ),
+      // Clear input and disable edit mode
+      this.setState((state) => ({
+        input: "",
+        editmode: !state.editmode,
+        modIndex: null,
+      }));
   };
 
   // Handle delete unicorn from view
@@ -195,6 +206,9 @@ export class Unicorn extends Component {
       return { data };
     });
 
-    Axios.delete(`http://localhost:8000/api/deletebyid/${this.state.data[index].id}`)
+    // Update backend
+    Axios.delete(
+      `http://localhost:8000/api/deletebyid/${this.state.data[index].id}`
+    );
   };
 }
