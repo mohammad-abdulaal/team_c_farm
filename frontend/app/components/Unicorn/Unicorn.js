@@ -113,31 +113,16 @@ export class Unicorn extends Component {
                 }
                 onPress={() => this.handleDelete(i)}
                 title="delete"
-                color="#841584"
+                color="#ba55d3"
               />
               <Button
                 title="edit"
-                Check
-                if
-                we
-                have
-                an
-                owner
-                or
-                if
-                the
-                owner
-                is
-                not
-                the
-                current
-                user
+                // Check if we have an owner or if the owner is not the current user
                 disabled={
                   entry.owner == null || entry.owner != this.state.user_email
                 }
                 onPress={() => this.handleEdit(i)}
-                // title="edit"
-                color="#841584"
+                color="#ba55d3"
               />
             </View>
           </View>
