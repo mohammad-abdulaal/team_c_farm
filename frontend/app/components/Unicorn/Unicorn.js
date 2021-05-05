@@ -11,6 +11,7 @@ import { Card } from "react-native-elements";
 import Axios from "axios";
 import CookieService from "../CookieService";
 import api from '../api';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // We are pretending to be Bob Smith until the backend is linked
 export class Unicorn extends Component {
@@ -62,12 +63,33 @@ export class Unicorn extends Component {
   }
 
   render() {
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+
+    card: {
+      borderWidth: 1,
+      fontSize: 20,
+      borderRadius: 8,
+      borderColor: '#ba55d3',
+      width: 300,
+      height: 150,
+      padding: 20,
+      marginBottom: 20
+    },
+
+    button: { flexDirection: "row" ,marginLeft: 20, justifyContent: 'space-evenly' }
+    });
     // Loop over all unicorns and create a card for each
     // Start reading at line 87
     const entries = this.state.data.map((entry, i) => {
       return (
-        <Card key={i}>
-          <Card.Title>{entry.name}</Card.Title>
+        <View style={styles.container}>
+        <View style={styles.card} key={i}>
+          <Card.Title >{entry.name}</Card.Title>
           <Card.Divider />
           {/* Check if we have an owner, otherwise display N/A */}
           <Text>
@@ -78,6 +100,8 @@ export class Unicorn extends Component {
           </Text>
           <View style={{ flexDirection: "row" }}>
             <Button
+              icon="delete"
+              style={{flexDirection: "row" ,marginLeft: 20}}
               disabled={
                 entry.owner == null || entry.owner != this.state.user_email
               }
@@ -85,27 +109,31 @@ export class Unicorn extends Component {
               title="delete"
               color="#841584"
             />
-            <Button
+            <Button 
+            title="edit"
+            // style={{flexDirection: "row" ,marginLeft: 20}}
               Check if we have an owner or if the owner is not the current user
               disabled={
                 entry.owner == null || entry.owner != this.state.user_email
               }
-
               onPress={() => this.handleEdit(i)}
-              title="edit"
+              // title="edit"
               color="#841584"
             />
           </View>
-        </Card>
+        </View>
+
+        </View>
       );
     });
 
     return (
       // Main view
       <View>
+        <Card>
         {this.state.user_id ? (
           <View>
-            <Text>Hi {this.state.user_fname}</Text>
+            <Card.Title>Hi {this.state.user_fname}</Card.Title>
             <TextInput
               onChange={this.handleInput}
               autoCompleteType="off"
@@ -127,6 +155,8 @@ export class Unicorn extends Component {
         ) : (
           <Text> View Unicorns to the farm</Text>
         )}
+
+        </Card>
         <ScrollView>{entries}</ScrollView>
       </View>
     );
@@ -232,4 +262,5 @@ export class Unicorn extends Component {
       `http://localhost:8000/api/deletebyid/${this.state.data[index].id}`
     );
   };
+
 }
