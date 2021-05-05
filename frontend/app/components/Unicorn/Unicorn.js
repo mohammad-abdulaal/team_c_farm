@@ -187,7 +187,7 @@ export class Unicorn extends Component {
     var updatedUnicorn = {
       id: this.state.data[this.state.modIndex].id,
       name: this.state.input,
-      owner: null,
+      owner: this.state.user_email,
       // owner: {this.state.user},
     };
 

@@ -9,6 +9,7 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    const userX= " ";
     public function login(Request $request){
 
         $getRequest = $request->validate([
@@ -28,6 +29,7 @@ class AuthController extends Controller
       }
 
         $user = Auth::user();
+        $this->userX=$user;
         if($user instanceOf User)
             $getToken = $user->createToken('personal token');
 

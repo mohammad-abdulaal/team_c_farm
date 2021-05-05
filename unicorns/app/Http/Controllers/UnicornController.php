@@ -12,27 +12,27 @@ class UnicornController extends Controller
     //Auth.user
     //getAll unicorns 
     public function get(){
-        $res = [
-            'all' => [],
-        ];
-        
-        $unicorns = Unicorn::get();
+      $res = [
+          'all' => [],
+      ];
+      
+      $unicorns = Unicorn::get();
 
-        foreach($unicorns as $key => $unicorn) {
-            //just for the user details :will be continued later
+      foreach($unicorns as $key => $unicorn) {
+          //just for the user details :will be continued later
 
-            // $owner = Unicorn::join('users', 'unicorns.user_id', '=', 'users.id')
-            //         ->select('users.id', 'users.first_name', 'users.last_name')
-            //         ->where('users.id', $unicorn->user_id)->get()->first();
+          // $owner = Unicorn::join('users', 'unicorns.user_id', '=', 'users.id')
+          //         ->select('users.id', 'users.first_name', 'users.last_name')
+          //         ->where('users.id', $unicorn->user_id)->get()->first();
 
-            $res['all'][$key] = [
-                'id' => $unicorn->id,
-                'name' => $unicorn->name,
-                //'owner' => $owner
-            ];
-        }
-        return response()->json($res);
-    }
+          $res['all'][$key] = [
+              'id' => $unicorn->id,
+              'name' => $unicorn->name,
+              'owner' => $unicorn->owner
+          ];
+      }
+      return response()->json($res);
+  }
 
     public function show(Unicorn $unicorn){
        return response()->json($unicorn, 201);
