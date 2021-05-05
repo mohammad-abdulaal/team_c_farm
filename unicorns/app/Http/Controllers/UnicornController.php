@@ -43,18 +43,19 @@ class UnicornController extends Controller
     public function store(Request $request) {
         $attributes = $request->validate([
         'name' => 'required|string',        
+        'user_id' => 'required',
+        'owner' => 'required',
         ]);
         
-        $user_id= auth()->user()->id;
-        //$user = Auth::user();
+        // $user_id= auth()->user()->id;
+        // $user = Auth::user();
 
         //return response()->json($user, 200);
         $unicorn =
         Unicorn::create([
         'name' => $attributes['name'],
-        //'user_id' => null
-        'user_id'=>$user_id
-        
+        'user_id' => $attributes['user_id'],
+        'owner' => $attributes['owner'],
         ]);       
         return response()->json($unicorn, 200);
         } 
@@ -73,8 +74,6 @@ class UnicornController extends Controller
             $res = Unicorn::destroy($id);
             return response()->json($res);
         }
-
-        
 
         //update unicorn 
         public function update(Request $request,$id) {

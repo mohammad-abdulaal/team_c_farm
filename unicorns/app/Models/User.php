@@ -43,11 +43,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function unicorn(){
-        return $this->hasMany(Unicorn::class);
-    }
-
-    // public function user(){
-    //     return $this->belongsTo(User::class);
-    // }
 }

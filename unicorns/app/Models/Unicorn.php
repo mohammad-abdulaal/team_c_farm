@@ -14,11 +14,7 @@ class Unicorn extends Model
    
     protected $fillable=[
         'name',
-        'user_id'
+        'user_id',
+        'owner',
     ];
-
-    public function user(){
-        //belong to one user only 
-        return $this->belongsTo(User::class,'user_id','id');
-    } 
 }

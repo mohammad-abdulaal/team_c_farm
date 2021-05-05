@@ -9,21 +9,23 @@ import {
 } from "react-native";
 import { Card } from "react-native-elements";
 import Axios from "axios";
+import CookieService from "../CookieService";
+import api from '../api';
 
 // We are pretending to be Bob Smith until the backend is linked
 export class Unicorn extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user_email: '',
+      owner: null,
       newUnicorn: null,
       modIndex: null,
       editmode: false,
       input: "",
-      user: {
-        id: 1,
-        first_name: "bob",
-        last_name: "smith",
-      },
+      user_id: null,
+      user_fname: "",
+      user_lname: "",
       data: [],
     };
   }
@@ -31,6 +33,21 @@ export class Unicorn extends Component {
   // Prepare to receive data from backend
   componentDidMount() {
     this.getAll();
+    this.getDetails();
+  }
+
+  getDetails() {
+
+    api.details().then((res) => {
+      console.log("User details: ", res.data)
+      console.log(res.data.id)
+      this.setState({
+        user_id: res.data.id,
+        user_fname: res.data.first_name,
+        user_lname: res.data.sure_name,
+        user_email: res.data.email,
+      })
+    }) 
   }
 
   // Call getAll api and set data in state
@@ -56,23 +73,24 @@ export class Unicorn extends Component {
           <Text>
             owner:{" "}
             {entry.owner
-              ? entry.owner.first_name + " " + entry.owner.last_name
+              ? entry.owner
               : "N/A"}
           </Text>
           <View style={{ flexDirection: "row" }}>
             <Button
               disabled={
-                entry.owner == null || entry.owner.id != this.state.user.id
+                entry.owner == null || entry.owner != this.state.user_email
               }
               onPress={() => this.handleDelete(i)}
               title="delete"
               color="#841584"
             />
             <Button
-              // Check if we have an owner or if the owner is not the current user
+              Check if we have an owner or if the owner is not the current user
               disabled={
-                entry.owner == null || entry.owner.id != this.state.user.id
+                entry.owner == null || entry.owner != this.state.user_email
               }
+
               onPress={() => this.handleEdit(i)}
               title="edit"
               color="#841584"
@@ -85,9 +103,9 @@ export class Unicorn extends Component {
     return (
       // Main view
       <View>
-        {this.state.user.id ? (
+        {this.state.user_id ? (
           <View>
-            <Text>Hi {this.state.user.first_name}</Text>
+            <Text>Hi {this.state.user_fname}</Text>
             <TextInput
               onChange={this.handleInput}
               autoCompleteType="off"
@@ -123,7 +141,7 @@ export class Unicorn extends Component {
 
   handleAdd = () => {
     // Get last id to create new one
-    let currentData = this.state.data;
+    var currentData = this.state.data;
     if (currentData.length > 0) {
       var newid = currentData[currentData.length - 1].id + 1;
     } else {
@@ -131,15 +149,18 @@ export class Unicorn extends Component {
     }
 
     // Create new unicorn object
-    let newUnicorn = {
-      id: newid,
+    var newUnicorn = {
+      // id: newid,
       name: this.state.input,
-      owner: {
-        id: this.state.user.id,
-        first_name: this.state.user.first_name,
-        last_name: this.state.user.last_name,
-      },
+      owner: this.state.user_email,
+      // owner: {
+      //   first_name: this.state.user_fname,
+      //   sure_name: this.state.user_lname,
+      // },
+      user_id: this.state.user_id,
     };
+    console.log(newUnicorn)
+
 
     // Add new unicorn object to data then clear input
     this.setState((state) => ({
@@ -166,7 +187,8 @@ export class Unicorn extends Component {
     var updatedUnicorn = {
       id: this.state.data[this.state.modIndex].id,
       name: this.state.input,
-      owner: this.state.user,
+      owner: null,
+      // owner: {this.state.user},
     };
 
     // Copy data, edit at modIndex and send back

@@ -16,7 +16,8 @@ class CreateUnicornTable extends Migration
         Schema::create('unicorn', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('user_id')->nullable(true);
+            $table->bigInteger('user_id');
+            $table->string('owner');
             $table->timestamps();
         });
     }
