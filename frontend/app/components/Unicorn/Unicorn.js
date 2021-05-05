@@ -10,15 +10,15 @@ import {
 import { Card } from "react-native-elements";
 import Axios from "axios";
 import CookieService from "../CookieService";
-import api from '../api';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import api from "../api";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 // We are pretending to be Bob Smith until the backend is linked
 export class Unicorn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_email: '',
+      user_email: "",
       owner: null,
       newUnicorn: null,
       modIndex: null,
@@ -37,18 +37,18 @@ export class Unicorn extends Component {
     this.getDetails();
   }
 
-  // Read details of the user currently logged in 
+  // Read details of the user currently logged in
   getDetails() {
     api.details().then((res) => {
-      console.log("User details: ", res.data)
-      console.log(res.data.id)
+      console.log("User details: ", res.data);
+      console.log(res.data.id);
       this.setState({
         user_id: res.data.id,
         user_fname: res.data.first_name,
         user_lname: res.data.sure_name,
         user_email: res.data.email,
-      })
-    }) 
+      });
+    });
   }
 
   // Call getAll api and set data in state
@@ -63,37 +63,35 @@ export class Unicorn extends Component {
   }
 
   render() {
-  
-  // Stylehsheet
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
+    // Stylehsheet
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      },
 
-    mainCard: {
-      marginBottom: 20,
-    },
+      mainCard: {
+        marginBottom: 20,
+      },
 
-    card: {
-      borderWidth: 1,
-      fontSize: 20,
-      borderRadius: 8,
-      borderColor: '#ba55d3',
-      width: 300,
-      height: 150,
-      padding: 20,
-      marginBottom: 20,
-      marginTop: 20
-    },
+      card: {
+        borderWidth: 1,
+        fontSize: 20,
+        borderRadius: 8,
+        borderColor: "#ba55d3",
+        width: 300,
+        height: 150,
+        padding: 20,
+        marginBottom: 20,
+        marginTop: 20,
+      },
 
-    fixToText: {
-      flexDirection: 'row',
-      justifyContent: 'space-evenly',
-      marginBottom: 10,
-    },
-
+      fixToText: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        marginBottom: 10,
+      },
     });
 
     // Loop over all unicorns and create a card for each
@@ -101,40 +99,48 @@ export class Unicorn extends Component {
     const entries = this.state.data.map((entry, i) => {
       return (
         <View style={styles.container}>
-        <View style={styles.card} key={i}>
-          <Card.Title >{entry.name}</Card.Title>
-          <Card.Divider />
-          {/* Check if we have an owner, otherwise display N/A */}
-          <Text>
-            owner:{" "}
-            {entry.owner
-              ? entry.owner
-              : "N/A"}
-          </Text>
-          <Card.Divider />
-          <View style={styles.fixToText}>
-            <Button
-              icon="delete"
-              disabled={
-                entry.owner == null || entry.owner != this.state.user_email
-              }
-              onPress={() => this.handleDelete(i)}
-              title="delete"
-              color="#841584"
-            />
-            <Button
-            title="edit"
-              Check if we have an owner or if the owner is not the current user
-              disabled={
-                entry.owner == null || entry.owner != this.state.user_email
-              }
-              onPress={() => this.handleEdit(i)}
-              // title="edit"
-              color="#841584"
-            />
+          <View style={styles.card} key={i}>
+            <Card.Title>{entry.name}</Card.Title>
+            <Card.Divider />
+            {/* Check if we have an owner, otherwise display N/A */}
+            <Text>owner: {entry.owner ? entry.owner : "N/A"}</Text>
+            <Card.Divider />
+            <View style={styles.fixToText}>
+              <Button
+                icon="delete"
+                disabled={
+                  entry.owner == null || entry.owner != this.state.user_email
+                }
+                onPress={() => this.handleDelete(i)}
+                title="delete"
+                color="#841584"
+              />
+              <Button
+                title="edit"
+                Check
+                if
+                we
+                have
+                an
+                owner
+                or
+                if
+                the
+                owner
+                is
+                not
+                the
+                current
+                user
+                disabled={
+                  entry.owner == null || entry.owner != this.state.user_email
+                }
+                onPress={() => this.handleEdit(i)}
+                // title="edit"
+                color="#841584"
+              />
+            </View>
           </View>
-        </View>
-
         </View>
       );
     });
@@ -142,8 +148,8 @@ export class Unicorn extends Component {
     return (
       // Main view
       <View style={styles.mainCard}>
-        <Card >
-        {/* {this.state.user_id ? ( */}
+        <Card>
+          {/* {this.state.user_id ? ( */}
           <View>
             <Card.Title>Welcome {this.state.user_fname}</Card.Title>
             <TextInput
@@ -164,10 +170,9 @@ export class Unicorn extends Component {
               />
             )}
           </View>
-        {/* ) : (
+          {/* ) : (
           <Text> View Unicorns to the farm</Text>
         )} */}
-
         </Card>
         <ScrollView>{entries}</ScrollView>
       </View>
@@ -201,8 +206,7 @@ export class Unicorn extends Component {
       // },
       user_id: this.state.user_id,
     };
-    console.log(newUnicorn)
-
+    console.log(newUnicorn);
 
     // Add new unicorn object to data then clear input
     this.setState((state) => ({
@@ -248,7 +252,8 @@ export class Unicorn extends Component {
 
     // Update backend
     Axios.post(
-      `http://localhost:8000/api/updatebyid/${this.state.data[this.state.modIndex].id
+      `http://localhost:8000/api/updatebyid/${
+        this.state.data[this.state.modIndex].id
       }`,
       updatedUnicorn
     ),
@@ -274,5 +279,4 @@ export class Unicorn extends Component {
       `http://localhost:8000/api/deletebyid/${this.state.data[index].id}`
     );
   };
-
 }
