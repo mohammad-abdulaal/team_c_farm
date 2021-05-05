@@ -37,8 +37,8 @@ export class Unicorn extends Component {
     this.getDetails();
   }
 
+  // Read details of the user currently logged in 
   getDetails() {
-
     api.details().then((res) => {
       console.log("User details: ", res.data)
       console.log(res.data.id)
@@ -63,11 +63,17 @@ export class Unicorn extends Component {
   }
 
   render() {
+  
+  // Stylehsheet
   const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center'
+    },
+
+    mainCard: {
+      marginBottom: 20,
     },
 
     card: {
@@ -78,11 +84,18 @@ export class Unicorn extends Component {
       width: 300,
       height: 150,
       padding: 20,
-      marginBottom: 20
+      marginBottom: 20,
+      marginTop: 20
     },
 
-    button: { flexDirection: "row" ,marginLeft: 20, justifyContent: 'space-evenly' }
+    fixToText: {
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      marginBottom: 10,
+    },
+
     });
+
     // Loop over all unicorns and create a card for each
     // Start reading at line 87
     const entries = this.state.data.map((entry, i) => {
@@ -98,10 +111,10 @@ export class Unicorn extends Component {
               ? entry.owner
               : "N/A"}
           </Text>
-          <View style={{ flexDirection: "row" }}>
+          <Card.Divider />
+          <View style={styles.fixToText}>
             <Button
               icon="delete"
-              style={{flexDirection: "row" ,marginLeft: 20}}
               disabled={
                 entry.owner == null || entry.owner != this.state.user_email
               }
@@ -109,9 +122,8 @@ export class Unicorn extends Component {
               title="delete"
               color="#841584"
             />
-            <Button 
+            <Button
             title="edit"
-            // style={{flexDirection: "row" ,marginLeft: 20}}
               Check if we have an owner or if the owner is not the current user
               disabled={
                 entry.owner == null || entry.owner != this.state.user_email
@@ -129,11 +141,11 @@ export class Unicorn extends Component {
 
     return (
       // Main view
-      <View>
-        <Card>
-        {this.state.user_id ? (
+      <View style={styles.mainCard}>
+        <Card >
+        {/* {this.state.user_id ? ( */}
           <View>
-            <Card.Title>Hi {this.state.user_fname}</Card.Title>
+            <Card.Title>Welcome {this.state.user_fname}</Card.Title>
             <TextInput
               onChange={this.handleInput}
               autoCompleteType="off"
@@ -152,9 +164,9 @@ export class Unicorn extends Component {
               />
             )}
           </View>
-        ) : (
+        {/* ) : (
           <Text> View Unicorns to the farm</Text>
-        )}
+        )} */}
 
         </Card>
         <ScrollView>{entries}</ScrollView>
